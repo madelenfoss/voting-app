@@ -1,8 +1,8 @@
-const Footer = () => {
+const Footer = ({ year }) => {
   return (
-    <div>
-      
-    </div>
+    <footer>
+      <p>© {year} Madelen Foss</p>
+    </footer>
   )
 }
 

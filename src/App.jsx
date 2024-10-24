@@ -11,7 +11,7 @@ const App = () => {
       <SearchCandidates />
       <Candidate />
       <TotalScore />
-      <Footer />
+      <Footer year={2024} />
     </>
   )
 }
