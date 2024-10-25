@@ -1,4 +1,4 @@
-import VoteCounter from "./VoteCounter.jsx";
+// import VoteCounter from "./VoteCounter.jsx";
 
 const Candidates = () => {
   // useState here
@@ -8,7 +8,7 @@ const Candidates = () => {
     <div>
       
 
-    <VoteCounter />
+    {/* <VoteCounter /> */}
     </div>
   )
 }

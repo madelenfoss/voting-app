@@ -61,3 +61,15 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+footer {
+  display: flex;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgb(255, 238, 0);
+  color: #1a1a1a;
+  width: 100vw;
+  justify-content: center;
+}
