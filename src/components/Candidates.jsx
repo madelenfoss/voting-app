@@ -26,6 +26,10 @@ const Candidates = () => {
     }
   };
 
+  const deleteCandidate = (id) => {
+    setCandidates(candidates.filter((candidate) => candidate.id !== id))
+  };
+
   return (
     <>
       <form action="">
@@ -58,7 +62,7 @@ const Candidates = () => {
               <img src={candidate.image} alt={candidate.name}/>
             </div>
             <VoteCounter />
-            <button>Delete</button>
+            <button onClick={() => deleteCandidate(candidate.id)}>Delete</button>
           </li>
         ))}
       </ul>
