@@ -1,6 +1,6 @@
-import Candidate from "./components/candidate.jsx";
+import Candidates from "./components/Candidates.jsx";
 import SearchCandidates from "./components/SearchCandidates.jsx";
-import TotalScore from "./components/TotalScore.jsx";
+import TotalVotes from "./components/TotalVotes.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -9,8 +9,8 @@ const App = () => {
     <>
       <Header />
       <SearchCandidates />
-      <Candidate />
-      <TotalScore />
+      <Candidates />
+      <TotalVotes />
       <Footer year={2024} />
     </>
   )

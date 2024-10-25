@@ -1,6 +1,9 @@
 import VoteCounter from "./VoteCounter.jsx";
 
-const Candidate = () => {
+const Candidates = () => {
+  // useState here
+
+
   return (
     <div>
       
@@ -10,4 +13,4 @@ const Candidate = () => {
   )
 }
 
-export default Candidate;
+export default Candidates;
