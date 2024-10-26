@@ -6,6 +6,7 @@ const Candidates = () => {
   const [candidates, setCandidates] = useState([]);
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +27,11 @@ const Candidates = () => {
       // Tilbakestiller navn
       setName("");
       // Tilbakestiller bilde
-      setImage(null)
+      setImage(null);
+      // Tilbakestiller feilmelding
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Please enter a name and upload a photo")
     }
   };
 
@@ -56,7 +61,7 @@ const Candidates = () => {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
-          <button onClick={addCandidate}>
+          <button onClick={addCandidate} className="candidate_add-btn">
             Add candidate
           </button>
         </form>
@@ -71,6 +76,9 @@ const Candidates = () => {
           <button>Search</button>
         </form>
       </div>
+      {errorMessage && (
+        <div className="error">{errorMessage}</div>
+      )}
 
       <ul className="candidate_ul">
         {candidates.map((candidate) => (
