@@ -1,5 +1,4 @@
 import VoteCounter from "./VoteCounter.jsx";
-
 import { useState } from "react";
 
 const Candidates = () => {
@@ -7,6 +6,11 @@ const Candidates = () => {
   const [candidates, setCandidates] = useState([]);
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    addCandidate();
+  }
 
   const addCandidate = () => {
     // Passer på at både navn og bilde er fylt inn
@@ -32,27 +36,38 @@ const Candidates = () => {
 
   return (
     <>
-      <form action="">
-        <label htmlFor="candidate_name">Candidate name</label>
-        <input 
-          id="candidate_name"
-          type="text" 
-          placeholder="Enter candidate's name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label htmlFor="candidate-image">Upload image</label>
-        <input 
-          id="candidate-image"
-          type="file" 
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
-      </form>
+      <div className="add-search">
+        <form className="addbar" onSubmit={handleSubmit}>
+          <label htmlFor="candidate_name">Candidate name</label>
+          <input 
+            id="candidate_name"
+            type="text" 
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="candidate-image">Upload image</label>
+          <input 
+            id="candidate-image"
+            type="file" 
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+          <button onClick={addCandidate}>
+            Add candidate
+          </button>
+        </form>
 
-      <button onClick={addCandidate}>
-        Add candidate
-      </button>
+
+        <form className="searchbar">
+          <label htmlFor="search"></label>
+          <input 
+            id="search" 
+            type="search"
+            placeholder="Search..."
+          />
+          <button>Search</button>
+        </form>
+      </div>
 
       <ul>
         {candidates.map((candidate) => (

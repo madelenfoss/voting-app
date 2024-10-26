@@ -1,8 +1,8 @@
-import { useState } from "react"
-import VoteCounter from "./VoteCounter.jsx"
+// import { useState } from "react"
+// import VoteCounter from "./VoteCounter.jsx"
 
 const TotalScore = () => {
-  const [totalScore, setTotalScore] = useState(0);
+  // const [totalScore, setTotalScore] = useState(0);
 
   return (
     <div>
