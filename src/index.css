@@ -37,7 +37,7 @@ h1 {
 
 .add-search {
   display: flex;
-  margin: 2rem auto;
+  margin: 2rem auto 0 auto;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -48,6 +48,7 @@ h1 {
   width: 70%;
   margin: 0 auto;
   padding: 1rem 2rem;
+  align-items: center;
 }
 
 .searchbar {
@@ -58,26 +59,55 @@ h1 {
   padding: 1rem 2rem;
 }
 
+#candidate {
+  padding: 0.5rem;
+}
+
+.candidate_name {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.candidate_image {
+  display: flex;
+  flex-direction: column;
+}
+
+input::-webkit-file-upload-button {
+  background: #ffe600;
+  padding: 0.4rem 1rem;
+}
+
+#image {
+  width: 14rem;
+}
+
 .candidate_ul {
   list-style: none;
 }
 
+.error {
+  margin: 0 auto;
+  padding: 0 3rem 1rem 3rem;
+  color: rgb(255, 255, 255);
+}
+/* 
 button {
   border: none;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
   background-color: #ffe600;
   cursor: pointer;
   transition: 0.3s ease-in-out;
+} */
+
+.candidate_add-btn {
+  border: none;
+  background-color: #ffe600;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  padding: 1rem 3rem;
 }
 
-button:hover {
-  background: #ff8000;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 footer {
   display: flex;
