@@ -40,6 +40,7 @@ h1 {
   margin: 2rem auto;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
 .addbar {
@@ -57,7 +58,7 @@ h1 {
   padding: 1rem 2rem;
 }
 
-.candidate_list {
+.candidate_ul {
   list-style: none;
 }
 
