@@ -69,7 +69,7 @@ const Candidates = () => {
         </form>
       </div>
 
-      <ul>
+      <ul className="candidate_list">
         {candidates.map((candidate) => (
           <li key={candidate.id} className="candidate">
             <div className="candidate-info">
