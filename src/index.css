@@ -30,17 +30,19 @@ button {
 }
 
 header {
+  display: flex;
+  align-items: center;
   margin: 0 auto;
-  background: #ffe600;
+  background: #2d2d2d;
   height: 5rem;
 }
 
 h1 {
   margin: 0 auto;
-  padding: 1rem;
-  color: #1a1a1a;
+  color: #ffffff;
   width: 100vw;
-  font-size: 2em;
+  font-size: 1.6rem;
+  font-weight: 400;
   text-transform: uppercase;
   text-align: center;
 }
@@ -114,8 +116,12 @@ input::-webkit-file-upload-button {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
+.candidate_name {
+  color: #ffe600;
+}
+
 .candidate_image {
-  border-radius: 5%;
+  border-radius: 0.3rem;
   width: 100%;
 }
 

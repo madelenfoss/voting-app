@@ -117,8 +117,8 @@ const Candidates = () => {
       <ul className="candidate_ul">
         {candidates.map((candidate) => (
           <li key={candidate.id} className="candidate_li">
-            <div className="candidate-info">
-              <h2>{candidate.name}</h2>
+            <div className="candidate_info">
+              <h2 className="candidate_name">{candidate.name}</h2>
               <img 
                 src={candidate.image} 
                 className="candidate_image"
