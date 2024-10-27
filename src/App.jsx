@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <Header adjective="most talented" candidate="dog"/>
       <main className="main">
         <Candidates onIncrease={increaseTotal} onDecrease={decreaseTotal} />
         <TotalVotes totalVotes={totalVotes} />

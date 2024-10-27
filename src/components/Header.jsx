@@ -1,13 +1,7 @@
-// import airGuitarPlayer from "../assets/images/airguitarlogo.png"
-
-const Header = () => {
+const Header = ({ adjective, candidate }) => {
   return (
     <header>
-      <h1>Vote for your favourite air guitar player</h1>
-      {/* <img 
-         src={airGuitarPlayer} 
-         className="logo"
-         alt="Ari guitar player logo"/> */}
+      <h1>Vote for the {adjective} {candidate}</h1>
     </header>
   )
 }
