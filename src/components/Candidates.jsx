@@ -1,7 +1,7 @@
 import VoteCounter from "./VoteCounter.jsx";
 import { useEffect, useState } from "react";
 
-const Candidates = () => {
+const Candidates = ({ onIncrease, onDecrease }) => {
   // useState her
   const [candidates, setCandidates] = useState([]);
   const [name, setName] = useState('');
@@ -74,7 +74,7 @@ const Candidates = () => {
   };
 
   return (
-    <>
+    <div className="main-2">
       <div className="add-search">
         <form className="addbar" onSubmit={handleSubmit}>
           <div className="candidate_name-input">
@@ -124,12 +124,12 @@ const Candidates = () => {
                 className="candidate_image"
                 alt={candidate.name}/>
             </div>
-            <VoteCounter />
+            <VoteCounter onIncrease={onIncrease} onDecrease={onDecrease} />
             <button onClick={() => deleteCandidate(candidate.id)}>Delete</button>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

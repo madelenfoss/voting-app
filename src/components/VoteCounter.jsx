@@ -1,14 +1,16 @@
 import { useState } from "react";
 
-const VoteCounter = () => {
+const VoteCounter = ({ onIncrease, onDecrease }) => {
   const [voteCount, setVoteCount] = useState(0);
 
   const increaseVotes = () => {
     setVoteCount(voteCount + 1);
+    onIncrease();
   };
 
   const decreaseVotes = () => {
     setVoteCount(voteCount -1);
+    onDecrease();
   };
 
   return (

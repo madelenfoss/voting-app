@@ -1,14 +1,7 @@
-// import { useState } from "react"
-// import VoteCounter from "./VoteCounter.jsx"
-
-const TotalScore = () => {
-  // const [totalScore, setTotalScore] = useState(0);
-
+const TotalScore = ({ totalVotes }) => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+      <h2 className="total-votes">Total votes: {totalVotes}</h2>
+  );
+};
 
-export default TotalScore
+export default TotalScore;
