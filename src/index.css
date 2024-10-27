@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #1a1c22;
+  background-color: #1a1a1a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,8 +21,24 @@ body {
   min-height: 100vh;
 }
 
+button {
+  border: none;
+  margin: 0.1rem;
+  background-color: #ffe600;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+header {
+  margin: 0 auto;
+  background: #ffe600;
+  height: 5rem;
+}
+
 h1 {
-  margin: 3rem auto;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #1a1a1a;
   width: 100vw;
   font-size: 2em;
   text-transform: uppercase;
@@ -63,28 +79,44 @@ h1 {
   padding: 0.5rem;
 }
 
-.candidate_name {
+.candidate_name-input {
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
 }
 
-.candidate_image {
+.candidate_image-input {
   display: flex;
   flex-direction: column;
 }
 
 input::-webkit-file-upload-button {
-  background: #ffe600;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 #image {
-  width: 14rem;
+  width: 13.5rem;
 }
 
 .candidate_ul {
   list-style: none;
+  margin-bottom: 3rem;
+  width: 50%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;	
+}
+
+.candidate_li {
+  background:#2d2d2d;
+  padding: 0 2rem 2rem 2rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.candidate_image {
+  border-radius: 5%;
+  width: 100%;
 }
 
 .error {
@@ -92,27 +124,20 @@ input::-webkit-file-upload-button {
   padding: 0 3rem 1rem 3rem;
   color: rgb(255, 255, 255);
 }
-/* 
-button {
-  border: none;
-  background-color: #ffe600;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-} */
 
 .candidate_add-btn {
   border: none;
   background-color: #ffe600;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  padding: 1rem 3rem;
+  padding: 1.3rem 3rem;
+  border-radius: 0.3rem;
 }
-
 
 footer {
   display: flex;
   margin-top: auto;
-  background: rgb(255, 238, 0);
+  background: #ffe600;
   color: #1a1a1a;
   width: 100vw;
   justify-content: center;
