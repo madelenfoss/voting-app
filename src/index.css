@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -41,6 +43,7 @@ h1 {
   margin: 0 auto;
   color: #ffffff;
   width: 100vw;
+  font-family: "Archivo Black", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -129,6 +132,7 @@ input::-webkit-file-upload-button {
 
 .candidate_name {
   color: #ffe600;
+  font-family: "Archivo Black", sans-serif;
 }
 
 .candidate_image {
@@ -155,6 +159,7 @@ input::-webkit-file-upload-button {
   position: absolute;
   left: 76%;
   top: 12.6rem;
+  font-family: "Archivo Black", sans-serif;
   padding: 1rem;
   width: 20%;
   background: #ffe600;
