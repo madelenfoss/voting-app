@@ -1,5 +1,5 @@
 import VoteCounter from "./VoteCounter.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Candidates = () => {
   // useState her
@@ -13,37 +13,71 @@ const Candidates = () => {
     addCandidate();
   }
 
-  const addCandidate = () => {
+  // For å lagre kandidatene slik at de ikke forsvinner når
+  // du oppdaterer siden
+  useEffect(() => {
+    const savedCandidates = localStorage.getItem("candidates");
+    if (savedCandidates) {
+      setCandidates(JSON.parse(savedCandidates));
+    }
+  }, []);
+
+  // Funksjon som konverterer bilde til base64
+  const convertImageToBase64 = (file) => {
+    return new Promise((resolve, reject)=> {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Oppdaterer kandidatliste og lagrer i localstorage
+  const addCandidate = async () => {
     // Passer på at både navn og bilde er fylt inn
     if (name && image) {
-      const newCandidate = {
-        id: Date.now(),
-        name: name,
-        image: URL.createObjectURL(image)
-      };
+      try {
 
-      // Legger inn ny kandidat i array
-      setCandidates([newCandidate, ...candidates]);
-      // Tilbakestiller navn
-      setName("");
-      // Tilbakestiller bilde
-      setImage(null);
-      // Tilbakestiller feilmelding
-      setErrorMessage("");
+        // Konverterer bildet til base64-string
+        const imageBase64 = await convertImageToBase64(image);
+
+        const newCandidate = {
+          id: Date.now(),
+          name: name,
+          image: imageBase64
+        };
+  
+        const updatedCandidates = [newCandidate, ...candidates];
+        // Legger inn ny kandidat i array
+        setCandidates(updatedCandidates);
+        localStorage.setItem("candidates", JSON.stringify(updatedCandidates));
+        
+        // Tilbakestiller navn
+        setName("");
+        // Tilbakestiller bilde
+        setImage(null);
+        // Tilbakestiller feilmelding
+        setErrorMessage("");
+
+      } catch (error) {
+        console.log("Error converting image to base64:", error);
+      }
     } else {
       setErrorMessage("Please enter a name and upload a photo")
     }
   };
 
   const deleteCandidate = (id) => {
-    setCandidates(candidates.filter((candidate) => candidate.id !== id))
+    const updatedCandidates = candidates.filter((candidate) => candidate.id !== id);
+    setCandidates(updatedCandidates);
+    localStorage.setItem("candidates", JSON.stringify(updatedCandidates));
   };
 
   return (
     <>
       <div className="add-search">
         <form className="addbar" onSubmit={handleSubmit}>
-          <div className="candidate_name">
+          <div className="candidate_name-input">
             <label htmlFor="candidate">Candidate name</label>
             <input 
               id="candidate"
@@ -52,7 +86,7 @@ const Candidates = () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="candidate_image">
+          <div className="candidate_image-input">
             <label htmlFor="image">Upload image</label>
             <input 
               id="image"
@@ -85,7 +119,10 @@ const Candidates = () => {
           <li key={candidate.id} className="candidate_li">
             <div className="candidate-info">
               <h2>{candidate.name}</h2>
-              <img src={candidate.image} alt={candidate.name}/>
+              <img 
+                src={candidate.image} 
+                className="candidate_image"
+                alt={candidate.name}/>
             </div>
             <VoteCounter />
             <button onClick={() => deleteCandidate(candidate.id)}>Delete</button>
