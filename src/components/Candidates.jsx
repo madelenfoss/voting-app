@@ -22,7 +22,8 @@ const Candidates = ({ onIncrease, onDecrease }) => {
     }
   }, []);
 
-  // Funksjon som konverterer bilde til base64
+  // Funksjon som konverterer bilde til base64 slik at det kan
+  // kan lagres i localStorage
   const convertImageToBase64 = (file) => {
     return new Promise((resolve, reject)=> {
       const reader = new FileReader();
