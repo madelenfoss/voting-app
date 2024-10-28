@@ -16,10 +16,13 @@ const VoteCounter = ({ candidateId, onIncrease, onDecrease }) => {
     setVoteCount((prevCount) => prevCount + 1);
     onIncrease();
   };
-  
+
   const decreaseVotes = () => {
-    setVoteCount((prevCount) => prevCount - 1);
-    onDecrease();
+    // Sørger for at poengsummen ikke blir mindre enn null
+    if (voteCount > 0) {
+      setVoteCount(voteCount - 1);
+      onDecrease();
+    }
   };
 
   return (
