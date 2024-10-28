@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const Candidates = ({ onIncrease, onDecrease }) => {
   // useState her
   const [candidates, setCandidates] = useState([]);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -125,7 +125,7 @@ const Candidates = ({ onIncrease, onDecrease }) => {
                 className="candidate_image"
                 alt={candidate.name}/>
             </div>
-            <VoteCounter onIncrease={onIncrease} onDecrease={onDecrease} />
+            <VoteCounter candidateId={candidate.id} onIncrease={onIncrease} onDecrease={onDecrease} />
             <button onClick={() => deleteCandidate(candidate.id)}>Delete</button>
           </li>
         ))}
