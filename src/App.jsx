@@ -2,10 +2,19 @@ import Candidates from "./components/Candidates.jsx";
 import TotalVotes from "./components/TotalVotes.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [totalVotes, setTotalVotes] = useState(0);
+  const [totalVotes, setTotalVotes] = useState(() => {
+    const savedTotalVotes = localStorage.getItem("totalVotes");
+    return savedTotalVotes !== null ? Number(savedTotalVotes) : 0;
+  });
+
+  // useEffect må til for å kunne bruke localStorage.
+  // localStore oppdateres hver gang totalVotes endres
+  useEffect(() => {
+    localStorage.setItem("totalVotes", totalVotes);
+  }, [totalVotes]);
 
   const increaseTotal = () => {
     setTotalVotes(totalVotes + 1);

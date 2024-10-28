@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const VoteCounter = ({ onIncrease, onDecrease }) => {
-  const [voteCount, setVoteCount] = useState(0);
+const VoteCounter = ({ candidateId, onIncrease, onDecrease }) => {
+  const [voteCount, setVoteCount] = useState(() => {
+    const savedVotes = localStorage.getItem(`votes_${candidateId}`);
+    return savedVotes !== null ? Number(savedVotes) : 0;
+  });
+
+  // useEffect for å kunne lagre stemmer i localStorage som
+  // oppdateres hver gang voteCount endres
+  useEffect(() => {
+    localStorage.setItem(`votes_${candidateId}`, voteCount);
+  }, [voteCount, candidateId]);
 
   const increaseVotes = () => {
-    setVoteCount(voteCount + 1);
+    setVoteCount((prevCount) => prevCount + 1);
     onIncrease();
   };
-
+  
   const decreaseVotes = () => {
-    setVoteCount(voteCount -1);
+    setVoteCount((prevCount) => prevCount - 1);
     onDecrease();
   };
 
