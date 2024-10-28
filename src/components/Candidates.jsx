@@ -7,6 +7,9 @@ const Candidates = ({ onIncrease, onDecrease }) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Legge til debouncer i forbindelse med searchTerm?
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -74,7 +77,12 @@ const Candidates = ({ onIncrease, onDecrease }) => {
     localStorage.setItem("candidates", JSON.stringify(updatedCandidates));
   };
 
+  const filteredCandidates = candidates.filter((candidate) =>
+    candidate.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
+
   return (
+    // HUSK Å ENDRE main-2 className!!!
     <div className="main-2">
       <div className="add-search">
         <form className="addbar" onSubmit={handleSubmit}>
@@ -83,12 +91,13 @@ const Candidates = ({ onIncrease, onDecrease }) => {
             <input 
               id="candidate"
               type="text" 
+              placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="candidate_image-input">
-            <label htmlFor="image">Upload image</label>
+            <label htmlFor="image">Upload candidate photo</label>
             <input 
               id="image"
               type="file" 
@@ -102,13 +111,19 @@ const Candidates = ({ onIncrease, onDecrease }) => {
         </form>
 
         <form className="searchbar">
-          <label htmlFor="search"></label>
-          <input 
-            id="search" 
-            type="search"
-            placeholder="Search..."
-          />
-          <button>Search</button>
+          <div className="search_input">
+            <label htmlFor="search">Search for candidates</label>
+            <input 
+              id="search" 
+              type="search"
+              placeholder="Enter a name"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+
+          {/* Legg til et lite search-ikon her? */}
+          <span><img src="" alt="" /></span>
         </form>
       </div>
       {errorMessage && (
@@ -116,7 +131,7 @@ const Candidates = ({ onIncrease, onDecrease }) => {
       )}
 
       <ul className="candidate_ul">
-        {candidates.map((candidate) => (
+        {filteredCandidates.map((candidate) => (
           <li key={candidate.id} className="candidate_li">
             <div className="candidate_info">
               <h2 className="candidate_name">{candidate.name}</h2>
@@ -125,7 +140,11 @@ const Candidates = ({ onIncrease, onDecrease }) => {
                 className="candidate_image"
                 alt={candidate.name}/>
             </div>
-            <VoteCounter candidateId={candidate.id} onIncrease={onIncrease} onDecrease={onDecrease} />
+            <VoteCounter 
+              candidateId={candidate.id} 
+              onIncrease={onIncrease} 
+              onDecrease={onDecrease} 
+            />
             <button onClick={() => deleteCandidate(candidate.id)}>Delete</button>
           </li>
         ))}
