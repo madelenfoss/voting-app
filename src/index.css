@@ -162,7 +162,8 @@ input::-webkit-file-upload-button {
 }
 
 .error {
-  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
   padding: 0 3rem 1rem 3rem;
   color: rgb(255, 255, 255);
 }
