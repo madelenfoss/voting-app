@@ -20,15 +20,17 @@ const App = () => {
     setTotalVotes(totalVotes + 1);
   }
 
-  const decreaseTotal = () => {
-    setTotalVotes(totalVotes - 1);
+  const decreaseTotal = (votes = 1) => {
+    setTotalVotes(totalVotes - votes);
   }
 
   return (
     <>
-      <Header adjective="most talented" candidate="dog"/>
+      <Header adjective="cutest" candidate="dog"/>
       <main className="main">
-        <Candidates onIncrease={increaseTotal} onDecrease={decreaseTotal} />
+        <Candidates 
+          onIncrease={increaseTotal} 
+          onDecrease={decreaseTotal} />
         <TotalVotes totalVotes={totalVotes} />
       </main>
       <Footer year={2024} />

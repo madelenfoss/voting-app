@@ -25,8 +25,8 @@ const Candidates = ({ onIncrease, onDecrease }) => {
     }
   }, []);
 
-  // Funksjon som konverterer bilde til base64 slik at det kan
-  // kan lagres i localStorage
+  // Funksjon som konverterer bilde til base64 slik at 
+  // det kan kan lagres i localStorage
   const convertImageToBase64 = (file) => {
     return new Promise((resolve, reject)=> {
       const reader = new FileReader();
@@ -45,6 +45,7 @@ const Candidates = ({ onIncrease, onDecrease }) => {
         // Konverterer bildet til base64-string
         const imageBase64 = await convertImageToBase64(image);
 
+        // Ny kandidateinfo. Date.now() lager en unik ID.
         const newCandidate = {
           id: Date.now(),
           name: name,
@@ -72,11 +73,23 @@ const Candidates = ({ onIncrease, onDecrease }) => {
   };
 
   const deleteCandidate = (id) => {
+    // Her henter vi kandidatens poengsum fra localStorage basert på deres id.
+    const savedVotes = Number(localStorage.getItem(`votes_${id}`)) || 0;
+
+    // Oppdaterer totalen i App.jsx
+    onDecrease(savedVotes);
+
+    // Fjerner kandidaten fra listen
     const updatedCandidates = candidates.filter((candidate) => candidate.id !== id);
     setCandidates(updatedCandidates);
     localStorage.setItem("candidates", JSON.stringify(updatedCandidates));
+
+    // Fjerner kandidatens poengsum fra localStorage slik at
+    // den også blir fjernet fra totalsummen som vises på siden.
+    localStorage.removeItem(`votes_${id}`);
   };
 
+  // Søkefelt med filterfunksjon
   const filteredCandidates = candidates.filter((candidate) =>
     candidate.name.toLowerCase().startsWith(searchTerm.toLowerCase())
   );
@@ -121,9 +134,10 @@ const Candidates = ({ onIncrease, onDecrease }) => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-
-          {/* Legg til et lite search-ikon her? */}
-          <span><img src="" alt="" /></span>
+          <img 
+            className="search_icon"
+            src="search.png" 
+            alt="search icon" />
         </form>
       </div>
       {errorMessage && (
@@ -145,7 +159,11 @@ const Candidates = ({ onIncrease, onDecrease }) => {
               onIncrease={onIncrease} 
               onDecrease={onDecrease} 
             />
-            <button onClick={() => deleteCandidate(candidate.id)}>Delete</button>
+            <button 
+              className="delete_button" 
+              onClick={() => deleteCandidate(candidate.id)}>
+                Delete
+            </button>
           </li>
         ))}
       </ul>
