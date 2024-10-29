@@ -28,8 +28,18 @@ const VoteCounter = ({ candidateId, onIncrease, onDecrease }) => {
   return (
     <div>
       <h2>Votes: {voteCount}</h2>
-      <button onClick={decreaseVotes}>No</button>
-      <button onClick={increaseVotes}>Yes</button>
+      <div className="vote_buttons">
+        <button 
+          className="yes_button"
+          onClick={increaseVotes}>
+          Yes
+        </button>
+        <button 
+          className="no_button"
+          onClick={decreaseVotes}>
+          No
+        </button>
+      </div>
     </div>
   )
 }
