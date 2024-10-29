@@ -206,13 +206,46 @@ input::-webkit-file-upload-button {
   left: 76%;
   top: 11.5rem;
   font-family: "Archivo Black", sans-serif;
-  padding: 1rem;
-  width: 20%;
+  padding: 1rem 0;
+  width: 21%;
   background: #ffe600;
   color: #1a1a1a;
   border-radius: 0.3rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+.voting_history {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 76%;
+  top: 19rem;
+  height: 55vh;
+  overflow: scroll;
+  width: 21%;
+  background: #ffe600;
+  color: #1a1a1a;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.voting_history-title {
+  margin: 1rem auto;
+  padding-top: 1rem;
+}
+
+.voting_history-ul {
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.voting_history-li {
+  width: 90%;
+  padding: 0.3rem;
 }
 
 footer {
