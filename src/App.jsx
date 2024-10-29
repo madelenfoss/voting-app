@@ -3,6 +3,7 @@ import TotalVotes from "./components/TotalVotes.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import { useState, useEffect } from "react";
+import VoteHistory from "./components/VoteHistory.jsx";
 
 const App = () => {
   const [totalVotes, setTotalVotes] = useState(() => {
@@ -24,14 +25,36 @@ const App = () => {
     setTotalVotes(totalVotes - votes);
   }
 
+  // Tilstand for stemmegivningshistorikk med bruk av localStorage
+  const [history, setHistory] = useState(() => {
+    const savedHistory = localStorage.getItem("voteHistory");
+    return savedHistory ? JSON.parse(savedHistory) : [];
+  });
+
+  const addHistoryEntry = (candidateName, action) => {
+    // Lager timestampvariabel som gir dato og tid i norsk format
+    const timestamp = new Date().toLocaleString("no-NO");
+    // Ny stemmegivning med ternary operator
+    const newEntry = `${candidateName} ${action === "increase" ? "recieved" : "lost"} a vote ${timestamp}`;
+
+    const updatedHistory = [newEntry, ...history];
+    setHistory(updatedHistory);
+    localStorage.setItem("voteHistory", JSON.stringify(updatedHistory));
+  };
+
+
+
   return (
     <>
       <Header adjective="cutest" candidate="dog"/>
       <main className="main">
         <Candidates 
           onIncrease={increaseTotal} 
-          onDecrease={decreaseTotal} />
+          onDecrease={decreaseTotal}
+          addHistoryEntry={addHistoryEntry}
+        />
         <TotalVotes totalVotes={totalVotes} />
+        <VoteHistory history={history}/>
       </main>
       <Footer year={2024} />
     </>

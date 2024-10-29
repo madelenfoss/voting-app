@@ -1,7 +1,7 @@
 import VoteCounter from "./VoteCounter.jsx";
 import { useEffect, useState } from "react";
 
-const Candidates = ({ onIncrease, onDecrease }) => {
+const Candidates = ({ onIncrease, onDecrease, addHistoryEntry }) => {
   // useState her
   const [candidates, setCandidates] = useState([]);
   const [name, setName] = useState("");
@@ -158,8 +158,14 @@ const Candidates = ({ onIncrease, onDecrease }) => {
             </div>
             <VoteCounter 
               candidateId={candidate.id} 
-              onIncrease={onIncrease} 
-              onDecrease={onDecrease} 
+              onIncrease={() => {
+                onIncrease();
+                addHistoryEntry(candidate.name, "increase");
+              }}
+              onDecrease={() => {
+                onDecrease();
+                addHistoryEntry(candidate.name, "decrease");
+              }}
             />
             <button 
               className="delete_button" 
