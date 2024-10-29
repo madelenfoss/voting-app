@@ -88,8 +88,7 @@ h1 {
   height: 2.5rem;
 }
 
-/* Husk å endre className */
-.main-2 {
+.candidate_fields {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -221,7 +220,7 @@ input::-webkit-file-upload-button {
   position: absolute;
   left: 76%;
   top: 19rem;
-  height: 55vh;
+  height: 60vh;
   overflow: scroll;
   width: 21%;
   background: #ffe600;

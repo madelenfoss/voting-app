@@ -1,5 +1,5 @@
 const VoteHistory = ({ history }) => (
-   <div className="voting_history">
+   <div title="Scroll to see more" className="voting_history">
       <h3 className="voting_history-title">Voting history</h3>
       <ul className="voting_history-ul">
          {history.map((entry, index) => (

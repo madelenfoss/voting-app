@@ -97,8 +97,7 @@ const Candidates = ({ onIncrease, onDecrease, addHistoryEntry }) => {
   );
 
   return (
-    // HUSK Å ENDRE main-2 className!!!
-    <div className="main-2">
+    <div className="candidate_fields">
       <div className="add-search">
         <form className="addbar" onSubmit={handleSubmit}>
           <div className="candidate_name-input">
