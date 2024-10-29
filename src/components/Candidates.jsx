@@ -25,7 +25,7 @@ const Candidates = ({ onIncrease, onDecrease }) => {
     }
   }, []);
 
-  // Funksjon som konverterer bilde til base64 slik at 
+  // Funksjon som konverterer bilder til base64 slik at 
   // det kan kan lagres i localStorage
   const convertImageToBase64 = (file) => {
     return new Promise((resolve, reject)=> {
@@ -45,7 +45,7 @@ const Candidates = ({ onIncrease, onDecrease }) => {
         // Konverterer bildet til base64-string
         const imageBase64 = await convertImageToBase64(image);
 
-        // Ny kandidateinfo. Date.now() lager en unik ID.
+        // Ny kandidatinfo. Date.now() lager en unik ID.
         const newCandidate = {
           id: Date.now(),
           name: name,
@@ -74,6 +74,8 @@ const Candidates = ({ onIncrease, onDecrease }) => {
 
   const deleteCandidate = (id) => {
     // Her henter vi kandidatens poengsum fra localStorage basert på deres id.
+    // Number brukes fordi localStorage lagrer alt som strenger og må derfor konverteres. 
+    // 0 brukes som fallback hvis valuen på vote er NaN eller null 
     const savedVotes = Number(localStorage.getItem(`votes_${id}`)) || 0;
 
     // Oppdaterer totalen i App.jsx
