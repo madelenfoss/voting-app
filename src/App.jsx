@@ -42,8 +42,6 @@ const App = () => {
     localStorage.setItem("voteHistory", JSON.stringify(updatedHistory));
   };
 
-
-
   return (
     <>
       <Header adjective="cutest" candidate="dog"/>
