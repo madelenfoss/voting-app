@@ -1,9 +1,9 @@
 const VoteHistory = ({ history }) => (
-   <div>
-      <h3>Voting history</h3>
-      <ul>
+   <div className="voting_history">
+      <h3 className="voting_history-title">Voting history</h3>
+      <ul className="voting_history-ul">
          {history.map((entry, index) => (
-            <li key={index}>{entry}</li>
+            <li className="voting_history-li" key={index}>{entry}</li>
          ))}
       </ul>
    </div>
