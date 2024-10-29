@@ -34,9 +34,11 @@ const App = () => {
   const addHistoryEntry = (candidateName, action) => {
     // Lager timestampvariabel som gir dato og tid i norsk format
     const timestamp = new Date().toLocaleString("no-NO");
-    // Ny stemmegivning med ternary operator
+    // Ny stemmegivning med ternary operator. Hvis action er en økning i stemmer
+    // vil teksten være "recieved", ellers vil teksten være "lost"
     const newEntry = `${candidateName} ${action === "increase" ? "recieved" : "lost"} a vote ${timestamp}`;
 
+    // Legger til ny historikk i oppdatert history array
     const updatedHistory = [newEntry, ...history];
     setHistory(updatedHistory);
     localStorage.setItem("voteHistory", JSON.stringify(updatedHistory));

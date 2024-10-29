@@ -7,6 +7,6 @@ const VoteHistory = ({ history }) => (
          ))}
       </ul>
    </div>
-)
+);
 
 export default VoteHistory;

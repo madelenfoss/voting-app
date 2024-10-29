@@ -2,7 +2,7 @@ import VoteCounter from "./VoteCounter.jsx";
 import { useEffect, useState } from "react";
 
 const Candidates = ({ onIncrease, onDecrease, addHistoryEntry }) => {
-  // useState her
+  // useState
   const [candidates, setCandidates] = useState([]);
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
